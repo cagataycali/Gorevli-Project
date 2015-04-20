@@ -1,3 +1,7 @@
 own_anasayfa:
     path:     /
     defaults: { _controller: TouchBundle:Own:index }
+
+group_listesi:
+    path:     /group-list/{id}
+    defaults: { _controller: TouchBundle:Own:group }

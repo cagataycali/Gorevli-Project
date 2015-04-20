@@ -31,16 +31,6 @@ class OwnController extends Controller //ROLE_MEMBER
         $member = $em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
 
 
-/*
- *
-        $grup = $em->createQueryBuilder()
-            ->select('g')
-            ->from('TouchBundle:member','g')
-            ->where('g.user = :user_id')
-            ->setParameter('user_id',$user)
-            ->getQuery()->getResult();
-
- */
 
         $grup_id=$em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
 
@@ -55,5 +45,22 @@ class OwnController extends Controller //ROLE_MEMBER
 
 
         return $this->render('@Touch/Own/index.html.twig',array('member'=>$member,'duyuru'=>$announcement));
+    }
+    public function groupAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user  = $this->getUser()->getId();
+        $member = $em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
+
+        /*
+         * Grubu çek
+         */
+        $groups = $em->getRepository('TouchBundle:grup')->findBy(array('id'=>$id));
+
+        $announcement = $em->getRepository('TouchBundle:announcement')->findBy(array('grup'=>$id));
+
+        return $this->render('TouchBundle:Own/List:group.html.twig',array('grup'=>$groups,'duyuru'=>$announcement,'member'=>$member));
+
     }
 }

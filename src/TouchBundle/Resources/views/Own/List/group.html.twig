@@ -1,0 +1,45 @@
+{% extends 'TouchBundle:Own:index.html.twig' %}
+
+{% block breadcrumb %}
+    {% for g in grup %}
+        {{ g.grupAd }}
+    {% endfor %}
+{% endblock breadcrumb %}
+{% block icerik %}
+
+    <section class="content">
+        <div class="row">
+            <section class="col-lg-7 connectedSortable ui-sortable">
+
+
+                <div id="recent"  class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><span class="fa fa-bullhorn"></span> Recent Announcements</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
+                    <div  class="box-body">
+                        {% for d in duyuru %}
+                            <div class="box box-default box-solid collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">{{ d.title|raw }}</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-box-tool"  data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div style="display: none;" class="box-body">
+                                    {{ d.announcement|raw }}
+                                </div><!-- /.box-body -->
+                            </div>
+                        {% endfor %}
+                    </div><!-- /.box-body -->
+                </div>
+
+
+            </section>
+        </div><!-- /.row (main row) -->
+    </section><!-- /.content -->
+
+{% endblock icerik %}

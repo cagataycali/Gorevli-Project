@@ -115,7 +115,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="sidebar-menu">
 
                 {% for m in member %}
-                    <li><a><i class="fa fa-group"></i> <span>{{ m.grup.grupAd }}</span></a></li>
+                    <li><a href="{{ path('group_listesi',{'id':m.id}) }}"><i class="fa fa-group"></i> <span>{{ m.grup.grupAd }}</span></a></li>
                 {% endfor %}
             </ul>
         </section>
@@ -175,6 +175,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         {% endblock icerik %}
     </div>
+
+
 </div>
 
 
