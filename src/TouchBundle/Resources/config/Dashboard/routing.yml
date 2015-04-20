@@ -1,0 +1,50 @@
+dashboard:
+    path:     /
+    defaults: { _controller: TouchBundle:Dashboard:index }
+
+
+add_group:
+    path:     /group
+    defaults: { _controller: TouchBundle:Dashboard:addGroupForm }
+
+add_group_action:
+    path:     /group-add
+    defaults: { _controller: TouchBundle:Dashboard:addGroup }
+
+
+group_list:
+    path:     /group-list/{id}
+    defaults: { _controller: TouchBundle:Dashboard:listGroup }
+
+
+add_member:
+    path:     /add-member
+    defaults: { _controller: TouchBundle:Dashboard:addMember }
+
+
+announcement:
+    path:     /announcement
+    defaults: { _controller: TouchBundle:Dashboard:announcement }
+
+announcementDelete:
+    path:     /announcementDelete
+    defaults: { _controller: TouchBundle:Dashboard:announcementDelete }
+
+
+messageForm:
+    path:     /message/{id}
+    defaults: { _controller: TouchBundle:Dashboard:messageForm }
+
+addMessage:
+    path:     /message
+    defaults: { _controller: TouchBundle:Dashboard:addMessage }
+
+
+multipleAnnouncement:
+    path:     /multiple-announcement
+    defaults: { _controller: TouchBundle:Dashboard:multipleAnnouncement }
+
+
+addMultipleMember:
+    path:     /add-multiple-member
+    defaults: { _controller: TouchBundle:Dashboard:addMultipleMember }

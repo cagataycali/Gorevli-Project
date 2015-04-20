@@ -1,0 +1,157 @@
+{% extends 'TouchBundle:Dashboard:index.html.twig' %}
+
+{% block breadcrumb %}
+    {% for g in grup %}
+        {{ g.grupAd }}
+    {% endfor %}
+{% endblock breadcrumb %}
+{% block icerik %}
+
+    <section class="content">
+        <div class="row">
+            <section class="col-lg-7 connectedSortable ui-sortable">
+
+
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title"><span class="fa fa-group"></span> Members</h3>
+                        <div class="box-tools">
+                            <div class="input-group">
+                                <a href="#add" class="label label-success">Add member</a>
+                                <input name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" type="text">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody><tr>
+                                <th>ID</th>
+                                <th>Member Ad</th>
+                                <th>Username</th>
+                                <th>Mail</th>
+                                <th>Message</th>
+
+
+
+                            </tr>
+                            {% for g in grup %}
+                               {% for m in g.member %}
+                                   <tr>
+                                       <td>{{ m.id }}</td>
+                                       <td>{{ m.memberAd }}</td>
+                                       <td>{{ m.user.username }}</td>
+                                       <td>{{ m.user.email }}</td>
+                                       <td><a href="{{ path('messageForm',{'id':m.user.id}) }}" class="label label-success">Message</a></td>
+                                   </tr>
+                               {% endfor %}
+                            {% endfor %}
+
+                            </tbody></table>
+                    </div><!-- /.box-body -->
+                </div>
+
+                <!-- Görev ekle -->
+                <div class="box box-info ">
+                        <div class="box-header">
+                            <h3 class="box-title"><span class="fa fa-bullhorn"></span> Publish Announcements</h3>
+                            <div class="box-tools pull-right">
+                                <a href="#recent" class="label label-success">Recent announcements</a>
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <form action="{{ path('announcement') }}" method="post">
+                                <div class="form-group">
+                                    <input class="form-control" id="baslik" name="baslik" required="required" placeholder="Title of announcement" type="text">
+                                </div>
+                                <div class="form-group">
+                                   <textarea class="form-control" id="duyuru" placeholder="Your announcements is here.." name="duyuru"></textarea>
+                                </div>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Publish</button>
+                                    {% for g in grup %}
+                                        <input type="hidden" id="grup" name="grup" value="{{ g.id }}">
+                                    {% endfor %}
+                                    <input type="hidden" id="author" name="author" value="{{ app.security.getToken().getUser().getId() }}">
+                                </div>
+                            </form>
+                        </div><!-- /.box -->
+                </div>
+                <!-- Öğrenci ekle -->
+                    <div id="add" class="box box-warning collapsed-box ">
+                        <div class="box-header">
+                            <h3 class="box-title"><span class="fa fa-user"></span>  Add member   </h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <!-- form start -->
+                            <form role="form" action="{{ path('add_member') }}" method="post">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="kullaniciMail">Email</label>
+                                        <input class="form-control" id="kullaniciMail" name="kullaniciMail" placeholder="E-Mail" type="email" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kullaniciAdi">Username</label>
+                                        <input class="form-control" id="kullaniciAdi" name="kullaniciAdi" placeholder="Kullanıcı adı" type="text" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kullaniciAd">Member Name</label>
+                                        <input class="form-control" id="kullaniciAd" name="kullaniciAd" placeholder="Ex; Ali Çalı" type="text" required="required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kullaniciSifre">Password</label>
+                                        <input class="form-control" id="kullaniciSifre" name="kullaniciSifre" placeholder="Şifre" type="password" required="required">
+                                    </div>
+                                    {% for g in grup %}
+                                        <input type="hidden" id="grup" name="grup" value="{{ g.id }}">
+                                    {% endfor %}
+                                    <input type="hidden" id="member_leader" name="member_leader" value="{{ app.security.getToken().getUser().getId() }}">
+
+
+                                </div><!-- /.box-body -->
+
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                <div id="recent"  class="box collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><span class="fa fa-bullhorn"></span> Recent Announcements</h3>
+                        <div class="box-tools pull-right">
+                            <button class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-plus"></i></button>
+                        </div><!-- /.box-tools -->
+                    </div><!-- /.box-header -->
+                    <div  class="box-body">
+                        {% for d in duyuru %}
+                            <div class="box box-default box-solid collapsed-box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">{{ d.title|raw }}</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                        <button class="btn btn-box-tool"  data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /.box-tools -->
+                                </div><!-- /.box-header -->
+                                <div style="display: none;" class="box-body">
+                                    {{ d.announcement|raw }}
+                                </div><!-- /.box-body -->
+                            </div>
+                        {% endfor %}
+                    </div><!-- /.box-body -->
+                </div>
+
+
+            </section>
+        </div><!-- /.row (main row) -->
+    </section><!-- /.content -->
+
+{% endblock icerik %}

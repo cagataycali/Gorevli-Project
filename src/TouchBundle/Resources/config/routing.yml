@@ -1,0 +1,22 @@
+anasayfa:
+    path:     /
+    defaults: { _controller: TouchBundle:Touch:index }
+
+
+dashboard:
+    resource: "@TouchBundle/Resources/config/Dashboard/routing.yml"
+    prefix:   /dashboard
+
+reg:
+    path:     /reg
+    defaults:  { _controller: TouchBundle:Touch:reg }
+
+registeration:
+    path:     /registeration
+    defaults:  { _controller: TouchBundle:Touch:registeration }
+
+
+
+own:
+    resource: "@TouchBundle/Resources/config/Own/routing.yml"
+    prefix:   /own

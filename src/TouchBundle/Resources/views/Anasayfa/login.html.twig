@@ -1,0 +1,83 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Touch Log-In</title>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/demo.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/component.css') }}" />
+
+</head>
+<body>
+{% block fos_user_content %}
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="codrops-top">
+            <a class="codrops-icon codrops-icon-prev" href="{{ path('anasayfa') }}"><span>Homepage</span></a>
+            <a class="codrops-icon codrops-icon-drop" href="{{ path('reg') }}"><span>Register</span></a>
+        </div>
+        <header class="codrops-header">
+            <h1>Touch <span>Tutor's can get in touch their students</span></h1>
+        </header>
+        <section>
+
+            <form id="theForm" class="simform" action="{{ path("fos_user_security_check") }}" method="post" autocomplete="off">
+
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <div class="simform-inner">
+                    <ol class="questions">
+                        <li>
+                            <span><label for="username">{{ 'security.login.username'|trans }}</label></span>
+                            <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                        </li>
+                        <li>
+                            <span><label for="password">{{ 'security.login.password'|trans }}</label></span>
+                            <input type="password" id="password" name="_password"/>
+                        </li>
+
+                    </ol><!-- /questions -->
+                    <button class="submit" type="submit" id="_submit" name="_submit">{{ 'security.login.submit'|trans }}</button>
+                    <div class="controls">
+                        <button class="next"></button>
+                        <div class="progress"></div>
+							<span class="number">
+								<span class="number-current"></span>
+								<span class="number-total"></span>
+							</span>
+                    <span class="error-message">
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                    </span>
+                    </div><!-- / controls -->
+                </div><!-- /simform-inner -->
+                <span class="final-message"></span>
+            </form><!-- /simform -->
+        </section>
+    </div><!-- /container -->
+
+{% endblock fos_user_content %}
+<script src="{{ asset('js/classie.js') }}"></script>
+<script src="{{ asset('js/modernizr.custom.js') }}"></script>
+<script src="{{ asset('js/stepsForm.js') }}"></script>
+<script>
+    var theForm = document.getElementById( 'theForm' );
+
+    new stepsForm( theForm, {
+        onSubmit : function( form ) {
+            // hide form
+            classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+            form.submit();
+
+        }
+    } );
+</script>
+</body>
+</html>

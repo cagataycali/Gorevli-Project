@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Touch HomePage</title>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/demo.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/component.css') }}" />
+
+</head>
+<body>
+{% block fos_user_content %}
+<div class="container">
+    <!-- Top Navigation -->
+
+    <header class="codrops-header">
+        <h1>Touch <span>Tutor's can get in touch their students</span></h1>
+    </header>
+    <center>
+        <a href="{{ path('fos_user_security_login') }}">Log-In</a> <br>
+        <a href="{{ path('reg') }}">Register</a>
+    </center>
+
+</div><!-- /container -->
+
+{% endblock fos_user_content %}
+<script src="{{ asset('js/classie.js') }}"></script>
+<script src="{{ asset('js/modernizr.custom.js') }}"></script>
+<script src="{{ asset('js/stepsForm.js') }}"></script>
+<script>
+    var theForm = document.getElementById( 'theForm' );
+
+    new stepsForm( theForm, {
+        onSubmit : function( form ) {
+            // hide form
+            classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+             form.submit();
+
+        }
+    } );
+</script>
+</body>
+</html>

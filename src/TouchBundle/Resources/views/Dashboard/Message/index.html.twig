@@ -1,0 +1,61 @@
+{% extends 'TouchBundle:Dashboard:index.html.twig' %}
+
+{% block breadcrumb %}
+    Private Message
+{% endblock breadcrumb %}
+{% block icerik %}
+
+
+<section class="content">
+    <div class="row">
+        <section class="col-lg-7 connectedSortable ui-sortable">
+
+        <div class="box box-danger direct-chat direct-chat-primary ">
+            <div class="box-header with-border">
+                <h3 class="box-title">{% for mn in user %}{{ mn.username }}{% endfor %}<small class="text-light-blue">'s and your private conversation </small></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+
+        <!-- Conversations are loaded here -->
+                <div class="direct-chat-messages">
+
+                    {% for m in mesaj %}
+                    <!-- Message to the right -->
+                    <div class="direct-chat-msg right">
+                        <div class="direct-chat-info clearfix">
+                            <span class="direct-chat-name">{{ m.user }}</span>
+                            <span class="direct-chat-timestamp pull-right"></span>
+                        </div><!-- /.direct-chat-info -->
+
+                        <div class="direct-chat-text">
+                            {{ m.message }}
+                        </div><!-- /.direct-chat-text -->
+                    </div><!-- /.direct-chat-msg -->
+                    {% endfor %}
+
+                </div><!--/.direct-chat-messages-->
+            </div><!-- /.box-body -->
+            <div class="box-footer">
+                <form action="{{ path('addMessage') }}" method="post">
+                    <input type="hidden" name="alan" value="{% for m in mesaj %}{{ m.member.id }}{% endfor %}">
+                    <input type="hidden" name="gonderen" value="{{ app.security.getToken().getUser().getId() }}">
+                    <div class="input-group">
+                        <input name="mesaj" placeholder="Add Message ..." class="form-control" type="text">
+                      <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-flat">Add</button>
+                      </span>
+                    </div>
+                </form>
+            </div><!-- /.box-footer-->
+        </div>
+
+    </section>
+    </div>
+</section>
+
+
+{% endblock %}
