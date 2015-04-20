@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 class AjaxController extends Controller
 {
 
-    public function indexAction() //todo öğren.
+    public function indexAction()
     {
         $request = $this->container->get('request');
         $em = $this->getDoctrine()->getManager();
@@ -27,8 +27,8 @@ class AjaxController extends Controller
         $user  = $this->get('security.context')->getToken()->getUser()->getId();
 
         $group = $em->createQueryBuilder()
-            ->select('g')
-            ->from('TouchBundle:grup','g')
+            ->select('m')
+            ->from('TouchBundle:member','m')
             ->where('g.user =:id')
             ->setParameter('id',$user)
             ->getQuery()

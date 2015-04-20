@@ -22,28 +22,18 @@ class OwnController extends Controller //ROLE_MEMBER
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
- //TODO üyenin bulunduğu grupları görüntüle ve bu gruplara gelen duyuruları görüntüle gelen özel mesajları görüntüle
 
+        /*
+         * KUllanıcının member bilgisini çeker.İsim,grup id vs.Ve buradan dahil olduğu grupları listeler.
+         */
+        $em = $this->getDoctrine()->getManager();
         $user  = $this->getUser()->getId();
-
-        $user1 = $em->getRepository('TouchBundle:User')->find($user);
-
         $member = $em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
 
-        $groups = $em->getRepository('TouchBundle:grup')->findBy(array('member'=>$member));
+        $grup_id=2;
+        $announcement = $em->getRepository('TouchBundle:announcement')->findBy(array('grup'=>$grup_id));
 
 
-        $member = $em->createQueryBuilder()
-            ->select('g')
-            ->from('TouchBundle:member','m')
-            ->where('m.user = :user_id')
-            ->setParameter('user_id',$user1)
-            ->getQuery()->getResult();
-
-        $member->getGrup();
-
-
-
-        return $this->render('@Touch/Own/index.html.twig',array('grup'=>$groups));
+        return $this->render('@Touch/Own/index.html.twig',array('member'=>$member,'duyuru'=>$announcement));
     }
 }

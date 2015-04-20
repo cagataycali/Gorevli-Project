@@ -24,7 +24,7 @@ class DashboardController extends Controller //ROLE_USER
         $em = $this->getDoctrine()->getManager();
 
 
-        $member  = $this->get('security.context')->getToken()->getUser()->getId();
+        $member  = $this->getUser()->getId();
         $groups = $em->getRepository('TouchBundle:grup')->findBy(array('user'=>$member));
 
         
