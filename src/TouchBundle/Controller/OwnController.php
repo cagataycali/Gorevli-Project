@@ -30,7 +30,27 @@ class OwnController extends Controller //ROLE_MEMBER
         $user  = $this->getUser()->getId();
         $member = $em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
 
-        $grup_id=2;
+
+/*
+ *
+        $grup = $em->createQueryBuilder()
+            ->select('g')
+            ->from('TouchBundle:member','g')
+            ->where('g.user = :user_id')
+            ->setParameter('user_id',$user)
+            ->getQuery()->getResult();
+
+ */
+
+        $grup_id=$em->getRepository('TouchBundle:member')->findBy(array('user'=>$user));
+
+        foreach($grup_id as $g)
+        {
+            $grup_id = $g->getGrup()->getId();
+        }
+
+
+
         $announcement = $em->getRepository('TouchBundle:announcement')->findBy(array('grup'=>$grup_id));
 
 
