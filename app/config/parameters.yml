@@ -11,4 +11,4 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: en
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: b7db5b7689fef8b37c8cc4932ce0f33ca4fa2aba

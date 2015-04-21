@@ -13,6 +13,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('ckeditor/skins/moono/editor.css') }}" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+
 
 
     <!-- Bootstrap 3.3.2 -->
@@ -69,10 +71,12 @@ desired effect
 
         <!-- Logo -->
         <a  class="logo">
+
+
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b class="glyphicon glyphicon-cloud"  data-toggle="offcanvas" role="button" ></b></span>
+            <span class="logo-mini"><img src="{{ asset('mini.png') }}" data-toggle="offcanvas" width="50" height="50" alt=""></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b class="glyphicon glyphicon-cloud" data-toggle="offcanvas"></b></span>
+            <span class="logo-lg"><img src="{{ asset('maxi.png') }}" data-toggle="offcanvas" width="50" height="50" alt=""></span>
         </a>
 
         <!-- Header Navbar -->
