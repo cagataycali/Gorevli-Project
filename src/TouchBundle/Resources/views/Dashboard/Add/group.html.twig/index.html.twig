@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Touch Register</title>
+    <title>Gorev.li | Grup ekle</title>
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('add/css/normalize.css') }}" />
@@ -19,20 +19,20 @@
 
     <div class="fs-form-wrap"  id="fs-form-wrap">
         <div class="fs-title">
-            <h1>Touch Add Group</h1>
+            <h1>Gorev.li  Grup ekle</h1>
             <div class="codrops-top">
-                <a class="codrops-icon codrops-icon-prev" href="{{ path('anasayfa') }}"><span>Homepage</span></a>
-                <a class="codrops-icon codrops-icon-drop" href="{{ path('fos_user_security_logout') }}"><span>Log-Out</span></a>
+                <a class="codrops-icon codrops-icon-prev" href="{{ path('anasayfa') }}"><span>Anasayfa</span></a>
+                <a class="codrops-icon codrops-icon-drop" href="{{ path('fos_user_security_logout') }}"><span>Çıkış</span></a>
             </div>
         </div>
         <form id="myform" method="post" action="{{ path('add_group_action') }}" class="fs-form fs-form-full" autocomplete="off">
             <ol class="fs-fields">
                 <li>
-                    <label class="fs-field-label fs-anim-upper" for="grupAd">What is your group name?</label>
-                    <input class="fs-anim-lower" id="grupAd" name="grupAd" type="text" placeholder="Your group name is.." required/>
+                    <label class="fs-field-label fs-anim-upper" for="grupAd">Grubun adı ne olsun?</label>
+                    <input class="fs-anim-lower" id="grupAd" name="grupAd" type="text" placeholder="Yeni grubun adı.." required/>
                 </li>
                 </ol><!-- /fs-fields -->
-            <button class="fs-submit" type="submit">Add group</button>
+            <button class="fs-submit" type="submit">Grubu ekle</button>
         </form><!-- /fs-form -->
     </div><!-- /fs-form-wrap -->
 

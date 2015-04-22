@@ -15,14 +15,14 @@
 
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title"><span class="fa fa-group"></span> Members</h3>
+                        <h3 class="box-title"><span class="fa fa-group"></span> Üyeler</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tbody><tr>
                                 <th>ID</th>
-                                <th>Member Ad</th>
-                                <th>Username</th>
+                                <th>Üye Adı</th>
+                                <th>Kullanıcı Adı</th>
                                 <th>Mail</th>
                             </tr>
                             {% for g in grup %}
@@ -43,19 +43,19 @@
                 <!-- Görev ekle -->
                 <div class="box box-info ">
                         <div class="box-header">
-                            <h3 class="box-title"><span class="fa fa-bullhorn"></span> Publish Announcements</h3>
+                            <h3 class="box-title"><span class="fa fa-bullhorn"></span> Duyuru Yayınla</h3>
                             <div class="box-tools pull-right">
-                                <a href="#recent" class="label label-success">Recent announcements</a>
+                                <a href="#recent" class="label label-success">Son duyurular</a>
                                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             </div>
                         </div>
                         <div class="box-body">
                             <form action="{{ path('announcement') }}" method="post">
                                 <div class="form-group">
-                                    <input class="form-control" id="baslik" name="baslik" required="required" placeholder="Title of announcement" type="text">
+                                    <input class="form-control" id="baslik" name="baslik" required="required" placeholder="Duyuru başlığı" type="text">
                                 </div>
                                 <div class="form-group">
-                                   <textarea class="form-control" id="duyuru" placeholder="Your announcements is here.." name="duyuru"></textarea>
+                                   <textarea class="form-control" id="duyuru" placeholder="Duyuru içeriği" name="duyuru"></textarea>
                                 </div>
                                 <div class="box-footer">
                                     <button type="submit" class="btn btn-primary">Publish</button>
@@ -70,7 +70,7 @@
                 <!-- Öğrenci ekle -->
                     <div id="add" class="box box-warning collapsed-box ">
                         <div class="box-header">
-                            <h3 class="box-title"><span class="fa fa-user"></span>  Add member   </h3>
+                            <h3 class="box-title"><span class="fa fa-user"></span>  Üye ekle   </h3>
                             <div class="box-tools pull-right">
                                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
                             </div>
@@ -112,7 +112,7 @@
 
                 <div id="recent"  class="box collapsed-box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><span class="fa fa-bullhorn"></span> Recent Announcements</h3>
+                        <h3 class="box-title"><span class="fa fa-bullhorn"></span> Son Duyurular</h3>
                         <div class="box-tools pull-right">
                             <button class="btn btn-box-tool"  data-widget="collapse"><i class="fa fa-plus"></i></button>
                         </div><!-- /.box-tools -->

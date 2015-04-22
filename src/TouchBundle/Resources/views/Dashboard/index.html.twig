@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Touch Dashboard</title>
+    <title>Gorev.li | Gösterge Paneli</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet" />
@@ -99,9 +99,6 @@ desired effect
 
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default btn-flat">Profile</a>
-                                </div>
                                 <div class="pull-right">
                                     <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Log-Out</a>
                                 </div>
@@ -138,7 +135,7 @@ desired effect
                     <li><a href="{{ path('group_list',{'id':g.id}) }}"><i class="fa fa-group"></i> <span>{{ g.grupAd }}</span></a></li>
                     {% endfor %}
 
-                    <li><a href="{{ path('add_group') }}"><i class="fa fa-plus-square-o"></i><span>Add Group</span> </a></li>
+                    <li><a href="{{ path('add_group') }}"><i class="fa fa-plus-square-o"></i><span>Grup ekle</span> </a></li>
                 </ul>
         </section>
         <!-- /.sidebar -->
@@ -152,12 +149,12 @@ desired effect
 
         <section class="content-header">
             <h1>
-                Dashboard
-                <small class="text-light-blue">Quick access </small>
+                Gösterge Paneli
+                <small class="text-light-blue">Hızlı erişim </small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Touch</a></li>
-                <li class="active">{% block breadcrumb %}Dashboard{% endblock breadcrumb %}</li>
+                <li><a href="#"><i class="fa fa-dashboard"></i> Gorev.li</a></li>
+                <li class="active">{% block breadcrumb %}Gösterge Paneli{% endblock breadcrumb %}</li>
             </ol>
         </section>
         {% block icerik %}
@@ -169,7 +166,7 @@ desired effect
                     <!-- Görev ekle -->
                     <div class="box box-info">
                         <div class="box-header">
-                            <h3 class="box-title"><span class="fa fa-bullhorn"></span> Publish Multiple Announcements   </h3>
+                            <h3 class="box-title"><span class="fa fa-bullhorn"></span> Çoklu Duyuru Gönder   </h3>
                             <div class="box-tools pull-right">
                                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             </div>
@@ -177,72 +174,26 @@ desired effect
                         <div class="box-body">
                                 <form action="{{ path('multipleAnnouncement') }}" method="post">
                                     <div class="form-group">
-                                        <input class="form-control" id="baslik" name="baslik" required="required" placeholder="Title of announcement" type="text">
+                                        <input class="form-control" id="baslik" name="baslik" required="required" placeholder="Duyuru başlığı" type="text">
                                     </div>
                                 <div class="form-group">
-                                    <select name="secenekler[]" id="secenekler[]"  data-tags="true" data-placeholder="Select groups" class="js-example-basic-multiple form-control"  required="required" multiple="multiple">
+                                    <select name="secenekler[]" id="secenekler[]"  data-tags="true" data-placeholder="Grupları seçiniz" class="js-example-basic-multiple form-control"  required="required" multiple="multiple">
                                         {% for g in grup %}
                                             <option value="{{ g.id }}" >{{ g.grupAd }}</option>
                                         {% endfor %}
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <textarea required="required" class="ckeditor" name="duyuru" id="duyuru" placeholder="Your announcement is here" rows="10" cols="80"></textarea>
+                                    <textarea required="required" class="ckeditor" name="duyuru" id="duyuru" placeholder="Duyuru içeriği" rows="10" cols="80"></textarea>
                                 </div><!-- /.form group -->
                                     <input type="hidden" id="author" name="author" value="{{ app.security.getToken().getUser().getId() }}">
 
                                     <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary">Publish</button>
+                                    <button type="submit" class="btn btn-primary">Yayınla</button>
                                 </div>
                                 </form>
                         </div>
                      </div>
-                    <!-- Add multiple member
-
-                    <div class="box box-warning collapsed-box ">
-                        <div class="box-header">
-                            <h3 class="box-title"> <span class="fa fa-user"></span>  Add member </h3>
-                            <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                            </div>
-                        </div>
-                        <div class="box-body">
-
-                    <form role="form" action="{{ path('addMultipleMember') }}" method="post">
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="kullaniciMail">Email</label>
-                                <input class="form-control" id="kullaniciMail" name="kullaniciMail" placeholder="E-Mail" type="email" required="required" >
-                            </div>
-                            <div class="form-group">
-                                <label for="kullaniciAdi">Username</label>
-                                <input class="form-control" id="kullaniciAdi" name="kullaniciAdi" placeholder="Username" type="text" required="required">
-                            </div>
-                            <div class="form-group">
-                                <label for="kullaniciAd">Member Name</label>
-                                <input class="form-control" id="kullaniciAd" name="kullaniciAd" placeholder="Member Name" type="text" required="required">
-                            </div>
-                            <div class="form-group">
-                                <label for="kullaniciSifre">Password</label>
-                                <input class="form-control" id="kullaniciSifre" name="kullaniciSifre" placeholder="Password" type="password" required="required">
-                            </div>
-                            <div class="form-group">
-
-                                <select name="secenekler[]" data-tags="true" data-placeholder="Select group's" class="js-example-basic-multiple form-control" multiple="multiple">
-                                    {% for g in grup %}
-                                        <option  >{{ g.grupAd }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                        </div>
-                    </form>
-            </div>
-    </div>
-    -->
                 </section>
             </div><!-- /.row (main row) -->
         </section><!-- /.content -->

@@ -1,14 +1,14 @@
 # This file is auto-generated during the composer install
 parameters:
     database_driver: pdo_mysql
-    database_host: 127.0.0.1
+    database_host: www.gorev.li
     database_port: null
-    database_name: symfony
-    database_user: root
+    database_name: ni350030_1sql1
+    database_user: ni350030_1sql1
     database_password: kalkandere
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    locale: en
+    locale: tr
     secret: b7db5b7689fef8b37c8cc4932ce0f33ca4fa2aba

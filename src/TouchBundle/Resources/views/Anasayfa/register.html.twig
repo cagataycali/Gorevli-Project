@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Touch Register</title>
+    <title>Gorev.li | Kayıt</title>
 
 
     <link rel="stylesheet" type="text/css" href="{{ asset('register/css/normalize.css') }}" />
@@ -19,28 +19,28 @@
 <div class="container">
     <div class="fs-form-wrap"  id="fs-form-wrap">
         <div class="fs-title">
-            <h1>Touch Register Form</h1>
+            <h1>Kayıt Formu</h1>
             <div class="codrops-top">
-                <a class="codrops-icon codrops-icon-prev" href="{{ path('anasayfa') }}"><span>Homepage</span></a>
-                <a class="codrops-icon codrops-icon-drop" href="{{ path('fos_user_security_login') }}"><span>Login</span></a>
+                <a class="codrops-icon codrops-icon-prev" href="{{ path('anasayfa') }}"><span>Anasayfa</span></a>
+                <a class="codrops-icon codrops-icon-drop" href="{{ path('fos_user_security_login') }}"><span>Giriş</span></a>
             </div>
         </div>
         <form id="myform" method="post" action="{{ path('registeration') }}" class="fs-form fs-form-full" autocomplete="off">
             <ol class="fs-fields">
                 <li>
-                    <label class="fs-field-label fs-anim-upper" for="kullaniciAdi">What is your username?</label>
-                    <input class="fs-anim-lower" id="username" name="username" type="text" placeholder="Your username.." required/>
+                    <label class="fs-field-label fs-anim-upper" for="kullaniciAdi">Kullanıcı adınız ne olsun?</label>
+                    <input class="fs-anim-lower" id="username" name="username" type="text" placeholder="Sizin kullanıcı adınız.." required/>
                 </li>
                 <li>
-                    <label class="fs-field-label fs-anim-upper" for="usermail" data-info="We won't send you spam, we promise...">What's your email address?</label>
-                    <input class="fs-anim-lower" id="usermail" name="usermail" type="email" placeholder="example@road.us" required/>
+                    <label class="fs-field-label fs-anim-upper" for="usermail" data-info="Size gereksiz hiçbir mesaj göndermeyeceğiz,söz veriyoruz.">Mail adresiniz nedir?</label>
+                    <input class="fs-anim-lower" id="usermail" name="usermail" type="email" placeholder="ali@cali.com" required/>
                 </li>
                 <li>
-                    <label class="fs-field-label fs-anim-upper" for="userpass">Your password?</label>
+                    <label class="fs-field-label fs-anim-upper" for="userpass">Şifreniz ne olsun?</label>
                     <input class="fs-anim-lower" type="password" id="userpass" name="userpass" required />
                 </li>
             </ol><!-- /fs-fields -->
-            <button class="fs-submit" type="submit">Register</button>
+            <button class="fs-submit" type="submit">Kayıt Ol</button>
         </form><!-- /fs-form -->
     </div><!-- /fs-form-wrap -->
 

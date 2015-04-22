@@ -15,8 +15,8 @@ framework:
     validation:      { enable_annotations: true }
     templating:
         assets_base_urls:
-                    http: [http://localhost/Touch/web/asset/]
-                    ssl:  [https://localhost/Touch/web/asset/]
+                    http: [http://localhost/GroupBox/web/assets/]
+                    ssl:  [https://localhost/GroupBox/web/assets/]
         engines: ['twig']
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
